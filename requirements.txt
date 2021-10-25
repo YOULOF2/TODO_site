@@ -1,0 +1,13 @@
+click==8.0.3
+Flask==2.0.2
+Flask-Login==0.5.0
+Flask-SQLAlchemy==2.5.1
+greenlet==1.1.2
+itsdangerous==2.0.1
+Jinja2==3.0.2
+MarkupSafe==2.0.1
+SQLAlchemy==1.4.26
+-e git+https://github.com/YOULOF2/TODO_site.git@7c004f9e8d9b48e5bd981527a6521e4e29b7cd44#egg=TODO_site
+Werkzeug==2.0.2
+setuptools~=57.0.0
+WTForms~=2.3.3

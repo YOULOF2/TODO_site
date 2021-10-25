@@ -1,27 +1,29 @@
 from flask import Flask
-from TODO_site.auth.auth import auth
-from flask_login import LoginManager
+import os
+from TODO_site.database import db
+from TODO_site.auth import auth as auth_file, login_manager
+
+SECRET_KEY = os.urandom(32)
 
 
 def create_app():
     flask_app = Flask(__name__)
-    flask_app.register_blueprint(auth)
+    flask_app.config['SECRET_KEY'] = SECRET_KEY
+    flask_app.register_blueprint(auth_file)
+    login_manager.init_app(flask_app)
+
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/database.db'
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    db.init_app(flask_app)
     return flask_app
 
 
 app = create_app()
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.blueprint_login_views = {
-    'admin': '/admin/login',
-    'site': '/login',
-}
 
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.get(user_id)
+if not os.path.isfile("/database/database.db"):
+    with app.app_context():
+        db.create_all()
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

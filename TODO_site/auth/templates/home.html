@@ -1,14 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ghetto TODO site</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}TODO site{% endblock %}
+
+{% block body %}
 <form method="POST" action="/">
     {{ form.csrf_token }}
-    {{ form.name.label }} {{ form.name(size=20) }}
-    <input type="submit" value="Go">
+    {{ form.login }}
+    {{ form.sign_up }}
 </form>
-</body>
-</html>
+{% endblock %}
