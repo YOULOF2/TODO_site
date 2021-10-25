@@ -2,7 +2,7 @@
 {% block title %}TODO site{% endblock %}
 
 {% block body %}
-<form method="POST" action="/">
+<form method="POST" action="{{ url_for('auth.welcome') }}">
     {{ form.csrf_token }}
     {{ form.login }}
     {{ form.sign_up }}

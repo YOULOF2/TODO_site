@@ -2,9 +2,10 @@
 
 {% block title %}Sign Up{% endblock %}
 {% block body %}
-<form method="POST" action="/">
+<form method="POST" action="{{ url_for('auth.user_signup') }}">
     {{ form.csrf_token }}
     {{ form.name.label }} {{ form.name(size=20) }}
+    {{ form.email.label }} {{ form.email(size=20) }}
     {{ form.password.label }} {{ form.password(size=20) }}
     {{ form.re_password.label }} {{ form.re_password(size=20) }}
     {{ form.submit }}
