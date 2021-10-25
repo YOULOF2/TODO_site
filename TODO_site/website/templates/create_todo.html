@@ -1,0 +1,11 @@
+{% block title %}Create ToDo{% endblock %}
+
+{% block body %}
+<form method="POST" action="{{ url_for('website.new_todo') }}">
+    {{ form.csrf_token }}
+    {{ form.title.label }} {{ form.title(size=20) }}
+    {{ form.sub_title.label }} {{ form.sub_title(size=20) }}
+    {{ form.body.label }} {{ form.body(size=20) }}
+    {{ form.submit }}
+</form>
+{% endblock %}

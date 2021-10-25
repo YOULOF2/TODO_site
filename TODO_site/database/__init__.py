@@ -14,21 +14,13 @@ class User(db.Model, UserMixin):
 
     cards = relationship("Cards", back_populates="user")
 
-    def __repr__(self):
-        print(f"There are {self.name.count()} records in  the table\n"
-              f"Table name = {self.__tablename__}")
-
 
 class Cards(db.Model):
     __tablename__ = 'cards'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.Text, nullable=False)
     sub_title = db.Column(db.Text, nullable=False)
-    body = db.Column(db.Text, unique=True, nullable=False)
+    body = db.Column(db.Text, nullable=False)
 
     user = relationship("User", back_populates="cards")
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-    def __repr__(self):
-        print(f"There are {self.title.count()} records in  the table\n"
-              f"Table name = {self.__tablename__}")

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}TODO list{% endblock %}
+
+{% block body %}
+<a href="{{ url_for('website.new_todo') }}">Create new Todo</a>
+<ul>
+    {% for todo in todos %}
+    <li>
+        <h2>{{ todo.title }} <a href="{{ url_for('website.remove_todo', card_id=todo.id) }}">x</a></h2>
+        <h4>{{ todo.sub_title }}</h4>
+        <p>{{ todo.body }}</p>
+    </li>
+
+    {% endfor %}
+</ul>
+{% endblock %}
