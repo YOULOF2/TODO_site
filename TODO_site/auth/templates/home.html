@@ -2,9 +2,23 @@
 {% block title %}TODO site{% endblock %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('auth.welcome') }}">
-    {{ form.csrf_token }}
-    {{ form.login }}
-    {{ form.sign_up }}
-</form>
+
+<div class="container">
+    <div class="row">
+        <div class="col align-self-start justify-content-center">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <h1>TODO SITE</h1>
+                <form action="{{ url_for('auth.welcome') }}" method="POST">
+                    <div class="d-grid">
+                        {{ form.csrf_token }}
+                        {{ form.login(class_="btn btn-primary") }}
+                        <br>
+                        {{ form.sign_up(class_="btn btn-outline-primary") }}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

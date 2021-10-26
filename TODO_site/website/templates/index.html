@@ -3,15 +3,26 @@
 {% block title %}TODO list{% endblock %}
 
 {% block body %}
-<a href="{{ url_for('website.new_todo') }}">Create new Todo</a>
-<ul>
-    {% for todo in todos %}
-    <li>
-        <h2>{{ todo.title }} <a href="{{ url_for('website.remove_todo', card_id=todo.id) }}">x</a></h2>
-        <h4>{{ todo.sub_title }}</h4>
-        <p>{{ todo.body }}</p>
-    </li>
-
-    {% endfor %}
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col align-self-start justify-content-center">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <h1 class="text-center">TODO SITE</h1>
+                {% for todo in todos %}
+                <div class="card" style="width: 35rem;margin:1rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ todo.title }} <a
+                                class="text-end" href="{{ url_for('website.remove_todo', card_id=todo.id) }}">x</a></h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ todo.sub_title }}</h6>
+                        <p class="card-text">{{ todo.body }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="d-grid gap-2">
+                    <a class="btn btn-primary btn-lg" href="{{ url_for('website.new_todo') }}">Create new Todo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

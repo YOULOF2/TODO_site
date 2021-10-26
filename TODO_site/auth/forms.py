@@ -15,7 +15,6 @@ class Login(FlaskForm):
 
 
 class SignUp(FlaskForm):
-    name = StringField("Name", validators=[DataRequired()])
     email = StringField("Email", validators=[Email(), DataRequired()])
     password = PasswordField("Password", validators=[DataRequired()])
     re_password = PasswordField("Re-enter Password", validators=[DataRequired()])

@@ -2,12 +2,25 @@
 
 {% block title %}Sign Up{% endblock %}
 {% block body %}
-<form method="POST" action="{{ url_for('auth.user_signup') }}">
-    {{ form.csrf_token }}
-    {{ form.name.label }} {{ form.name(size=20) }}
-    {{ form.email.label }} {{ form.email(size=20) }}
-    {{ form.password.label }} {{ form.password(size=20) }}
-    {{ form.re_password.label }} {{ form.re_password(size=20) }}
-    {{ form.submit }}
-</form>
+<div class="container">
+    <div class="row">
+        <div class="col align-self-start justify-content-center">
+            <div class="position-absolute top-50 start-50 translate-middle">
+                <div class="mb-3 row">
+                    <h1 class="text-center">Sign Up</h1>
+                    <form action="{{ url_for('auth.user_signup') }}" method="POST">
+                        {{ form.csrf_token }}
+                        {{ form.email(size=20, class_="form-control", placeholder=form.email.name) }}
+                        {{ form.password(size=20, class_="form-control", placeholder=form.password.name) }}
+                        {{ form.re_password(size=20, class_="form-control", placeholder=form.re_password.name) }}
+                        <div class="d-grid gap-2">
+                            {{ form.submit(class_="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

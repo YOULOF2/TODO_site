@@ -91,7 +91,6 @@ def user_signup():
     # POST METHOD
     if request.method == "POST":
         if signup_form.validate_on_submit():
-            name = signup_form.name.data
             email = signup_form.email.data
             password = signup_form.password.data
             re_password = signup_form.re_password.data
@@ -100,7 +99,6 @@ def user_signup():
                 if password == re_password:
                     pass_hash = generate_password_hash(password, salt_length=SALT_TIMES, method="pbkdf2:sha256")
                     user = User(
-                        name=name,
                         email=email,
                         password=pass_hash,
                     )
